@@ -1,0 +1,5 @@
+staticfiles/*
+*.pyc
+*.sqlite3
+*.bak
+db.sqlite3

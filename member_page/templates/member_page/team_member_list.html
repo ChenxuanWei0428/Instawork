@@ -1,0 +1,16 @@
+{% extends 'member_page/base.html' %}
+
+{% block content %}
+  <h2>Team Member</h2>
+  <p>There are a total of {{ total_members }} team member in your team</p>
+  <ul>
+    {% for team_member in team_members %}
+      <li>{{ team_member.first_name }} {{ team_member.last_name }} 
+        {% if team_member.role == 'Admin' %}
+          - {{ team_member.role }}
+        {% endif %}
+        <a href="{% url 'team_member_edit' team_member.id %}">Edit</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'team_member_add' %}">+</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'member_page/base.html' %}
+
+{% block content %}
+  <h2>{% if team_member %}Edit Team Member{% else %}Add Team Member{% endif %}</h2>
+  {% if team_member %}
+    <form method="post" action="{% url 'team_member_edit' pk=team_member.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+      <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+    </form>
+  {% else %}
+    <form method="post" action="{% url 'team_member_add' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+  {% endif %}
+  <a href="{% url 'team_member_list' %}">Back to Team Member List</a>
+{% endblock %}
