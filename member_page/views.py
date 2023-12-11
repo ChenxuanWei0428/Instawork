@@ -7,6 +7,10 @@ def team_member_list(request):
     total_members = team_members.count()
     return render(request, 'member_page/team_member_list.html', {'team_members': team_members, 'total_members': total_members})
 
+
+# improve suggestion: currently add and edit page are using the same template since they don't have much different
+# but can be seperate in the future for other requirement like for security
+
 def team_member_add(request):
     if request.method == 'POST':
         form = TeamMemberForm(request.POST)
